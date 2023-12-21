@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
-import "./index.scss";
+import "./index.scss"
 import { FaComputer } from "react-icons/fa6";
 import { MdEditDocument } from "react-icons/md";
 import { HiHandThumbUp } from "react-icons/hi2";
-import himg from '../assets/images/hisobotimg.png'
+import himg from '../../../../assets/images/hisobotimg.png'
+import Register from "../register";
 
 export default function HomePage() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [reg ,setReg] = useState(false)
+
+  useEffect(() => {
+    localStorage.setItem('reg', true);
+  }, [reg]);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (event) => {
@@ -41,7 +47,13 @@ export default function HomePage() {
         setDeferredPrompt(null);
       });
     }
+    setReg(true);
   };
+
+  if(localStorage.getItem('reg')){
+    return <Register/>
+  }
+
 
   return (
     <div className="main">

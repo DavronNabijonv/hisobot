@@ -1,0 +1,173 @@
+@import url(../../../../mainstyles/index.scss);
+
+.register {
+  background-image: url(../../../../assets/images/site-bg.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 60vw;
+  .tlimg {
+    mix-blend-mode: color-dodge;
+    opacity: 0.4;
+    margin: -1vw 0 0 -1vw;
+  }
+  .rgs_inputs {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 25%;
+    z-index: 1;
+  }
+  .anm {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 75%;
+    left: 72%;
+    font-size: 2vw;
+    font-family: 600;
+    color: white;
+    font-family: "Poppins",sans-serif;
+    text-align: center;
+    span{
+        font-size: 3vw;
+        font-weight: 700;
+        color: rgb(195, 118, 226);
+    }
+  }
+  .bg {
+    position: absolute;
+    width: 100%;
+    height: 60vw;
+    object-fit: cover;
+    right: 0;
+    float: right;
+    mix-blend-mode: color-dodge;
+    opacity: 0.4;
+  }
+}
+
+.login {
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2vw;
+  gap: 1.5vw;
+  .logo {
+    width: 15vw;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    width: 100%;
+    input {
+      padding: 0.5vw 1vw;
+      background: none;
+      border: 0.15vw solid white;
+      border-radius: 1vw;
+      font-size: 1vw;
+      font-family: "Poppins", sans-serif;
+    }
+    .loginbtn {
+      background: rgb(73, 6, 99);
+      padding: 0.3vw 0.5vw;
+      border: 0.15vw solid white;
+      border-radius: 1vw;
+      font-size: 1.3vw;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      width: 80%;
+      margin: auto;
+    }
+    .loginbtn:hover {
+      cursor: pointer;
+      background: none;
+      color: rgb(195, 118, 226);
+    }
+  }
+  .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+    gap: 1vw;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    .signupga{
+        background: none;
+        border: none;
+        text-decoration: underline;
+        font-size: 1.3vw;
+        color: rgb(195, 118, 226);
+    }
+  }
+}
+
+
+.signup {
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2vw;
+    gap: 1.5vw;
+    .logo {
+      width: 15vw;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1vw;
+      width: 100%;
+      input {
+        padding: 0.5vw 1vw;
+        background: none;
+        border: 0.15vw solid white;
+        border-radius: 1vw;
+        font-size: 1vw;
+        font-family: "Poppins", sans-serif;
+      }
+      .signupbtn {
+        background: rgb(73, 6, 99);
+        padding: 0.3vw 0.5vw;
+        border: 0.15vw solid white;
+        border-radius: 1vw;
+        font-size: 1.3vw;
+        font-family: "Poppins", sans-serif;
+        color: white;
+        width: 80%;
+        margin: auto;
+      }
+      .signupbtn:hover {
+        cursor: pointer;
+        background: none;
+        color: rgb(195, 118, 226);
+      }
+    }
+    .toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1vw;
+      gap: 1vw;
+      font-family: "Poppins", sans-serif;
+      color: white;
+      .loginga{
+          background: none;
+          border: none;
+          text-decoration: underline;
+          font-size: 1.3vw;
+          color: rgb(195, 118, 226);
+      }
+    }
+  }

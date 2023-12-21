@@ -2,11 +2,10 @@
   "name":"Xisobot PWA",
   "short_name":"Xisobot PWA",
   "description":"This is a inniSight Compony product",
-  "start_url":"/pwaindex.html",
+  "start_url": "/index.html", 
   "display":"standalone",
   "background_color":"#000000",
   "theme_color":"#000000",
-  "orientation":"portrait-primary",
   "icons":[
     {
       "src":"/icons/android-launchericon-72-72.png",

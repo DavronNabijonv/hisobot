@@ -1,5 +1,4 @@
-@import url(../mainstyles/index.scss);
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap');
+@import url(../../../../mainstyles/index.scss);
 
 .main {
   .navbar {
@@ -17,7 +16,7 @@
       .mbtn {
         background: rgb(244, 242, 240);
         border: 0.15vw solid rgb(56, 2, 73);
-        font-family: sans-serif;
+        font-family: "Poppins", sans-serif;
         font-size: 1vw;
         padding: 0.7vw 1.5vw;
         border-radius: 0.7vw;
@@ -62,6 +61,7 @@
           color: rgb(84, 6, 110);
           font-weight: 500;
           font-size: 1.1vw;
+          font-family: "Poppins", sans-serif;
           text-align: center;
         }
       }
@@ -73,12 +73,12 @@
       }
       .grp:nth-child(2) {
         .grp-prg {
-          width: 18vw;
+          width: 20vw;
         }
       }
       .grp:nth-child(3) {
         .grp-prg {
-          width: 12vw;
+          width: 14vw;
         }
       }
     }
@@ -93,11 +93,13 @@
         color: rgba(8, 8, 72, 0.8);
         font-size: 1.25vw;
         font-weight: 600;
+        font-family: "Poppins", sans-serif;
       }
       .mfphonenumber {
         color: rgb(84, 6, 110);
         font-size: 1.3vw;
         font-weight: 600;
+        font-family: "Poppins", sans-serif;
       }
     }
   }
