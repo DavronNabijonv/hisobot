@@ -20,6 +20,9 @@
         font-size: 1vw;
         padding: 0.7vw 1.5vw;
         border-radius: 0.7vw;
+        display: flex;
+        align-items: center;
+        gap: 1vw;
       }
     }
   }
@@ -145,8 +148,8 @@
             height: 4vw;
           }
           .grp-prg {
-            width: 17vw;
-            font-size: 2vw;
+            width: 20vw;
+            font-size: 1.7vw;
           }
         }
         .grp:nth-child(1) {
@@ -189,7 +192,11 @@
     .mbody {
       .prg {
         width: 100%;
-        padding: 68px 0;
+        padding: 4vw;
+        line-height: 6.5vw;
+        margin: 68px 0;
+        border-radius: 3vw;
+        background: rgba(203, 234, 234, 0.3);
       }
       .xizmatlar {
         width: 100%;
@@ -253,7 +260,7 @@
         padding: 50px 3vw;
         .bprg{
           font-size: 5vw;
-          line-height: 5.5vw;
+          line-height: 6.5vw;
         }
       }
       .xizmatlar{
@@ -276,7 +283,7 @@
         .grp:nth-child(2){
           width: 40vw;
           .grp-prg{
-            font-size: 3.5vw;
+            font-size: 3.2vw;
           }
         }
         .grp:nth-child(3){

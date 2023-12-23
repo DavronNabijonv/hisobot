@@ -3,35 +3,14 @@ import "./index.scss";
 import tlimg from "../../../../assets/images/top-left-img.png";
 import bg from "../../../../assets/images/bg-explosion.png";
 import logo from "../../../../assets/images/hisobotimg.png";
-import AnimatedLetters from "./animatedLetter";
+import { IoIosArrowDown } from "react-icons/io";
 
 export default function Register() {
   const [rgs, setRgs] = useState(false);
-  const [letterClass, setLetterClass] = useState("text-animate");
-  const nameArray = [
-    "I",
-    "n",
-    "n",
-    "a",
-    "S",
-    "i",
-    "g",
-    "h",
-    "t",
-    "",
-    "p",
-    "r",
-    "o",
-    "d",
-    "u",
-    "c",
-    "t",
-  ];
-  const jobArray = ["X", "i", "s", "o", "b", "o", "t"];
   return (
     <div className="register">
       <img src={tlimg} className="tlimg" />
-      <div className="rgs_inputs">
+      <div className={`rgs_inputs ${rgs ? "sup" : "sin"}`}>
         {rgs ? (
           <Signup
             func={() => {
@@ -39,7 +18,7 @@ export default function Register() {
             }}
           />
         ) : (
-          <Login
+          <Signin
             func={() => {
               setRgs(true);
             }}
@@ -47,63 +26,153 @@ export default function Register() {
         )}
       </div>
       <p className="anm">
-        <AnimatedLetters
-          letterClass={letterClass}
-          strArray={nameArray}
-          idx={25}
-        />
-        <br/>
-        <AnimatedLetters
-          letterClass={letterClass}
-          strArray={jobArray}
-          idx={15}
-        />
+        InnaSight product
+        <br />
+        <span>Xisobot.uz</span>
       </p>
       <img src={bg} className="bg" />
     </div>
   );
 }
 
-function Login(props) {
+function Signin(props) {
+  const [tog1, setTog1] = useState("Kim sifatida kiryapsiz?");
+  const [sel, setSel] = useState(false);
+  const [tog2, setTog2] = useState(true);
+  const [tog3, setTog3] = useState(false);
   return (
-    <div className="login">
+    <div className="signin">
       <img src={logo} className="logo" />
-      <form>
-        <input type="text" placeholder="Ta`lim markazini kiriting" />
-        <input type="text" placeholder="Ism Familyangiz" />
-        <input type="password" placeholder="Parolingizni kiriting" />
-        <button type="submit" className="loginbtn">
-          Log in
-        </button>
-      </form>
       <div className="toggle">
         <p>Ro`yhatdan o`tganmisiz?</p>
         <button onClick={props.func} className="signupga">
           Sign up
         </button>
       </div>
+      <p
+        className="drop"
+        onClick={() => {
+          setSel(!sel);
+        }}
+      >
+        {tog1} <IoIosArrowDown />
+      </p>
+      <p
+        className={` ${sel ? "open1" : "close"}`}
+        onClick={() => {
+          setTog1("Administrator");
+          setTog2(true);
+          setTog3(false);
+          setSel(false);
+        }}
+      >
+        Administrator
+      </p>
+      <p
+        className={`${sel ? "open2" : "close"}`}
+        onClick={() => {
+          setTog1("Rahbar");
+          setTog2(false);
+          setTog3(true);
+          setSel(false);
+        }}
+      >
+        Rahbar
+      </p>
+      {tog2 && <Admin />}
+      {tog3 && <Rahbar />}
     </div>
   );
 }
 
 function Signup(props) {
+  const [tog1, setTog1] = useState("Kim sifatida kiryapsiz?");
+  const [sel, setSel] = useState(false);
+  const [tog2, setTog2] = useState(true);
+  const [tog3, setTog3] = useState(false);
   return (
     <div className="signup">
       <img src={logo} className="logo" />
-      <form>
-        <input type="text" placeholder="Ta`lim markazini kiriting" />
-        <input type="text" placeholder="Ism Familyangiz" />
-        <input type="password" placeholder="Parolingizni kiriting" />
-        <button type="submit" className="signupbtn">
-          Sign up
-        </button>
-      </form>
       <div className="toggle">
-        <p>Akkauntingizdan kirish - </p>
+        <p>Akkauntdan kirish - </p>
         <button onClick={props.func} className="loginga">
-          Log in
+          Sign in
         </button>
       </div>
+      <p
+        className="drop"
+        onClick={() => {
+          setSel(!sel);
+        }}
+      >
+        {tog1} <IoIosArrowDown />
+      </p>
+      <p
+        className={` ${sel ? "open1" : "close"}`}
+        onClick={() => {
+          setTog1("Administrator");
+          setTog2(true);
+          setTog3(false);
+          setSel(false);
+        }}
+      >
+        Administrator
+      </p>
+      <p
+        className={`${sel ? "open2" : "close"}`}
+        onClick={() => {
+          setTog1("Rahbar");
+          setTog2(false);
+          setTog3(true);
+          setSel(false);
+        }}
+      >
+        Rahbar
+      </p>
+      {tog2 && <Admin />}
+      {tog3 && <Rahbar />}
     </div>
+  );
+}
+
+function Admin() {
+  return (
+    <form className="admin">
+      <input type="text" placeholder="Ta`lim markazini kiriting" />
+      <input type="text" placeholder="Ism Familyangiz" />
+      <input type="password" placeholder="Parolingizni kiriting" />
+      <button type="submit" className="loginbtn">
+        Log in
+      </button>
+    </form>
+  );
+}
+
+function Rahbar() {
+  return (
+    <form className="rahbar">
+      <input type="text" className="r_input" placeholder="Ismingiz" />
+      <input type="text" className="r_input" placeholder="Famiilyangiz" />
+      <input type="text" className="r_input" placeholder="Tel-raqam" />
+      <select>
+        <option className="hudud">Hududlar</option>
+        <option>Namangan v</option>
+        <option>Andijon v</option>
+        <option>Farg`ona v</option>
+        <option>Toshkent v</option>
+        <option>Jizzax v</option>
+        <option>Samarqand v</option>
+        <option>Qashqadaryo v</option>
+        <option>Surhandaryo v</option>
+        <option>Xorazm v</option>
+        <option>Buxoro v</option>
+        <option>Guliston v</option>
+        <option>Navoiy v</option>
+        <option>Qoraqalpog`iston Res</option>
+      </select>
+      <button type="submit" className="loginbtn">
+        Log in
+      </button>
+    </form>
   );
 }

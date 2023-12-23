@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import "./index.scss"
+import "./index.scss";
 import { FaComputer } from "react-icons/fa6";
 import { MdEditDocument } from "react-icons/md";
 import { HiHandThumbUp } from "react-icons/hi2";
-import himg from '../../../../assets/images/hisobotimg.png'
+import { FiDownload } from "react-icons/fi";
+import himg from "../../../../assets/images/hisobotimg.png";
 import Register from "../register";
+import { Link } from "react-router-dom";
 
 export default function HomePage() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [reg ,setReg] = useState(false)
+  const [reg, setReg] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('reg', true);
+    localStorage.setItem("reg", false);
   }, [reg]);
 
   useEffect(() => {
@@ -26,7 +28,10 @@ export default function HomePage() {
 
     return () => {
       // Remove the event listener when the component unmounts
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
     };
   }, []);
 
@@ -47,13 +52,12 @@ export default function HomePage() {
         setDeferredPrompt(null);
       });
     }
-    setReg(true);
+    setReg(false);
   };
 
-  if(localStorage.getItem('reg')){
-    return <Register/>
-  }
-
+  // if(localStorage.getItem('reg')){
+  //   return <Register/>
+  // }
 
   return (
     <div className="main">
@@ -61,9 +65,11 @@ export default function HomePage() {
       <div className="navbar">
         <div className="container">
           <img src={himg} className="mttl" />
-          <button className="mbtn" onClick={handleInstallButtonClick}>
-            Tizimni yuklash
-          </button>
+          <Link to={'/reg'}>
+            <button className="mbtn">
+              Tizimni yuklash <FiDownload />
+            </button>
+          </Link>
         </div>
       </div>
       {/* ... (the rest of your component) */}
@@ -93,14 +99,14 @@ export default function HomePage() {
           </div>
           <div className="grp">
             <HiHandThumbUp />
-            <p className="grp-prg">
-              Barcha xizmat va huquqlar kafolatlangan!
-            </p>
+            <p className="grp-prg">Barcha xizmat va huquqlar kafolatlangan!</p>
           </div>
         </div>
         <div className="mfooter">
-            <p className="mfprg">InnaSite - kompaniyasi tomonidan ishlab chiqilgan!</p>
-            <p className="mfphonenumber">+998 94 277 48 46</p>
+          <p className="mfprg">
+            InnaSite - kompaniyasi tomonidan ishlab chiqilgan!
+          </p>
+          <p className="mfphonenumber">+998 94 277 48 46</p>
         </div>
       </div>
     </div>
