@@ -1,0 +1,117 @@
+@import url(../../../../mainstyles/index.scss);
+
+.searchPart {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5vw 3vw;
+  .srch_p {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.4vw;
+    font-weight: 700;
+    color: var(--clr);
+    letter-spacing: 0.1vw;
+  }
+  .srch_rsp {
+    display: none;
+  }
+  form {
+    display: flex;
+    gap: 1vw;
+    .srch {
+      border-radius: 1vw;
+      border: 0.2vw solid var(--clr);
+      padding: 0.5vw;
+      font-size: 1vw;
+      width: 25vw;
+    }
+    .srchbtn {
+      border-radius: 1vw;
+      background-color: var(--clr);
+      border: 0.2vw solid var(--clr);
+      color: white;
+      padding: 0.5vw;
+      font-size: 1.2vw;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .searchPart {
+    .srch_p {
+      font-size: 2.2vw;
+    }
+    form {
+      .srch {
+        border-radius: 1.8vw;
+        border: 0.25vw solid var(--clr);
+        padding: 0.7vw;
+        font-size: 1.8vw;
+        width: 40vw;
+      }
+      .srchbtn {
+        font-size: 2vw;
+        padding: 0.7vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .searchPart {
+    justify-content: center;
+    padding-top: 6vw;
+    .srch_p {
+      display: none;
+    }
+    .srch_rsp {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 5.5vw;
+      right: 3vw;
+      padding: 1vw;
+      background: var(--clr);
+      color: white;
+      font-size: 5vw;
+      border-radius: 20%;
+      font-weight: 700;
+    }
+    form {
+      .srch {
+        border-radius: 1.8vw;
+        border: 0.4vw solid var(--clr);
+        padding: 1vw;
+        font-size: 2.5vw;
+        width: 50vw;
+      }
+      .srchbtn {
+        font-size: 2.8vw;
+        padding: 1vw;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .searchPart {
+    .srch_rsp{
+        top: 6vw;
+        font-size: 7vw;
+    }
+    form {
+      .srch {
+        border-radius: 1.8vw;
+        border: 0.6vw solid var(--clr);
+        padding: 1vw;
+        font-size: 3.5vw;
+        width: 50vw;
+      }
+      .srchbtn {
+        font-size: 3vw;
+        padding: 2vw;
+      }
+    }
+  }
+}

@@ -4,6 +4,7 @@ import tlimg from "../../../../assets/images/top-left-img.png";
 import bg from "../../../../assets/images/bg-explosion.png";
 import logo from "../../../../assets/images/hisobotimg.png";
 import { IoIosArrowDown } from "react-icons/io";
+import {NavLink} from 'react-router-dom'
 
 export default function Register() {
   const [rgs, setRgs] = useState(false);
@@ -141,9 +142,11 @@ function Admin() {
       <input type="text" placeholder="Ta`lim markazini kiriting" />
       <input type="text" placeholder="Ism Familyangiz" />
       <input type="password" placeholder="Parolingizni kiriting" />
-      <button type="submit" className="loginbtn">
-        Log in
-      </button>
+      <NavLink to="/asosiy">
+        <button type="submit" className="loginbtn">
+          Log in
+        </button>
+      </NavLink>
     </form>
   );
 }
@@ -170,9 +173,11 @@ function Rahbar() {
         <option>Navoiy v</option>
         <option>Qoraqalpog`iston Res</option>
       </select>
-      <button type="submit" className="loginbtn">
-        Log in
-      </button>
+      <NavLink to="/asosiy">
+        <button type="submit" className="loginbtn">
+          Log in
+        </button>
+      </NavLink>
     </form>
   );
 }

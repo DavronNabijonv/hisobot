@@ -82,6 +82,9 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    a{
+      width: 10vw;
+    }
     input {
       padding: 0.5vw 1vw;
       background: none;
@@ -159,6 +162,9 @@
     justify-content: center;
     gap: 1vw;
     width: 100%;
+    a{
+      width: 10vw;
+    }
     input {
       padding: 0.5vw 1vw;
       background: none;
@@ -228,6 +234,9 @@
     color: rgb(247, 245, 245);
     width: 8.5vw;
     border-radius: 0 1vw 1vw 0;
+  }
+  a{
+    width: 10vw;
   }
 }
 
