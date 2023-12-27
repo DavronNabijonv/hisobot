@@ -10,7 +10,7 @@ export default function Register() {
   const [rgs, setRgs] = useState(false);
   return (
     <div className="register">
-      <img src={tlimg} className="tlimg" />
+      {/* <img src={tlimg} className="tlimg" /> */}
       <div className={`rgs_inputs ${rgs ? "sup" : "sin"}`}>
         {rgs ? (
           <Signup
@@ -26,12 +26,12 @@ export default function Register() {
           />
         )}
       </div>
-      <p className="anm">
+      {/* <p className="anm">
         InnaSight product
         <br />
         <span>Xisobot.uz</span>
-      </p>
-      <img src={bg} className="bg" />
+      </p> */}
+      {/* <img src={bg} className="bg" /> */}
     </div>
   );
 }
