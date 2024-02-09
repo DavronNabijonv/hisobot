@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
-import "./index.scss";
 import { CiCirclePlus } from "react-icons/ci";
-const axios = require("axios");
+import axios from "axios"; // Import axios directly
+
+import "./index.scss";
 
 export default function Asosiy_Search() {
   return (
@@ -21,23 +22,29 @@ export default function Asosiy_Search() {
         <div className="img"></div>
       </div>
       <div>
-        <Rersult_Search/>
+        <ResultSearch /> {/* Corrected component name */}
       </div>
     </div>
   );
 }
 
-function Rersult_Search() {
-  const [ftch, setFtch] = useState();
+function ResultSearch() { // Corrected function name
+  const [data, setData] = useState([]); // Initialize state with an empty array
+
   useEffect(() => {
-    axios("http://localhost:3001/data/TDcenter/student").then((res) =>
-      setFtch(res)
-    );
+    axios.get("http://localhost:3001/data/TDcenter/student")
+      .then((response) => {
+        setData(response.data); // Access response data from the 'data' property
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error.message); // Implement error handling
+      });
   }, []);
+
   return (
     <div>
-      {ftch.map((r, index) => (
-        <div>
+      {data.map((r, index) => (
+        <div key={index}> {/* Add key prop */}
           <p>{r.id}</p>
           <p>{r.student_name}</p>
           <p>{r.guruh}</p>
