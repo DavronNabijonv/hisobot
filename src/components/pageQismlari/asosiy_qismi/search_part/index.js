@@ -37,7 +37,7 @@ function ResultSearch() {
       .get("http://localhost:3001/data/TDcenter/student")
       .then((response) => {
         setData(response.data.data); // Access response data from the 'data' property
-        console.log(response);
+        console.log(response.data.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error.message); // Implement error handling
