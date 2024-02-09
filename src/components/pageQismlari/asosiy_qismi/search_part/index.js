@@ -39,6 +39,7 @@ function ResultSearch() { // Corrected function name
       .catch((error) => {
         console.error("Error fetching data:", error.message); // Implement error handling
       });
+      console.log(data);
   }, []);
 
   return (
