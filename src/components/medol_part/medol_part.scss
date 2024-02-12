@@ -1,0 +1,73 @@
+@import url(../../mainstyles/index.scss);
+
+.student_medol{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: aliceblue;
+    opacity: 0.8;
+    .get_info{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: rgb(195, 9, 198);
+        padding: 20px;
+        border-radius: 20px;
+        width: 300px;
+        label{
+            margin-left: 10px;
+            font-size: 20px;
+        }
+        input{
+            margin-bottom: 10px;
+            border-radius: 16px;
+            border: none;
+            padding: 5px 0 5px 15px;
+            font-size: 16px;
+        }
+        .medol_btn_grp{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            button{
+                padding: 5px 15px;
+                border: 2px solid rgb(88, 88, 244);
+                border-radius: 16px;
+                font-size: 16px;
+                font-weight: 600;
+                color: white;
+                letter-spacing: 2px;
+                transition: all 0.3s ease;
+            }
+            button:hover{
+                cursor: pointer;
+                scale: 1.1;
+            }
+            .chqsh{
+                background-color: rgb(217, 29, 29);
+                border: 2px solid rgb(248, 74, 74);
+            }
+            .qsh{
+                background-color: rgb(83, 83, 255);
+                border: 2px solid rgb(49, 49, 245);
+            }
+        }
+    }
+}
+
+@media(max-width:320px){
+    .student_medol{
+        .get_info{
+            width: 90%;
+            margin: auto;
+            .medol_btn_grp{
+                gap: 2%;
+            }
+        }
+    }
+}

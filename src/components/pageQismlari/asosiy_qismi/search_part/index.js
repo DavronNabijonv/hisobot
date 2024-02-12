@@ -2,14 +2,32 @@ import React, { useEffect, useState } from "react";
 import { IoSearch } from "react-icons/io5";
 import { CiCirclePlus } from "react-icons/ci";
 import axios from "axios"; // Import axios directly
-
+import "../../../../mainstyles/index.scss";
 import "./index.scss";
+import { Student_Add } from "../../../medol_part/medol_part";
+import { CiEdit } from "react-icons/ci";
+import { HiOutlineTrash } from "react-icons/hi";
 
 export default function Asosiy_Search() {
+  const [add_s, setAdd_s] = useState(false);
   return (
     <div>
+      {add_s && (
+        <Student_Add
+          close_medol={() => {
+            setAdd_s(false);
+          }}
+        />
+      )}
       <div className="searchPart">
-        <p className="srch_p">+Добавить</p>
+        <p
+          className="srch_p"
+          onClick={() => {
+            setAdd_s(!add_s);
+          }}
+        >
+          +Добавить
+        </p>
         <p className="srch_rsp">
           <CiCirclePlus />
         </p>
@@ -34,7 +52,7 @@ function ResultSearch() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3001/data/TDcenter/student")
+      .get("http://localhost:2002/data/TDcenter/students")
       .then((response) => {
         setData(response.data.data); // Access response data from the 'data' property
         console.log(response.data.data);
@@ -42,20 +60,29 @@ function ResultSearch() {
       .catch((error) => {
         console.error("Error fetching data:", error.message); // Implement error handling
       });
-    console.log(data);
   }, []);
 
   return (
-    <div>
+    <div className="ftch_grp">
       {data.length > 0 ? (
         data.map((r, index) => (
-          <div key={index}>
-            <p>{r.id}</p>
-            <p>{r.student_name}</p>
+          <div key={index} className="f_grp">
+            <div className="f_grp_name">
+              <p>{r.id}.</p>
+              <p>{r.student_name}</p>
+            </div>
             <p>{r.guruh}</p>
             <p>{r.filial}</p>
             <p>{r.yonalish}</p>
             <p>{r.status}</p>
+            <div className="f_grp_edit">
+              <button>
+                <CiEdit />
+              </button>
+              <button>
+                <HiOutlineTrash />
+              </button>
+            </div>
           </div>
         ))
       ) : (

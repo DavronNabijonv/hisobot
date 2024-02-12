@@ -4,7 +4,9 @@ import tlimg from "../../../../assets/images/top-left-img.png";
 import bg from "../../../../assets/images/bg-explosion.png";
 import logo from "../../../../assets/images/hisobotimg.png";
 import { IoIosArrowDown } from "react-icons/io";
-import {NavLink} from 'react-router-dom'
+import { NavLink, Navigate } from "react-router-dom";
+import axios from "axios";
+import Asosiy from "../../../../pages/asosiy";
 
 export default function Register() {
   const [rgs, setRgs] = useState(false);
@@ -26,12 +28,6 @@ export default function Register() {
           />
         )}
       </div>
-      {/* <p className="anm">
-        InnaSight product
-        <br />
-        <span>Xisobot.uz</span>
-      </p> */}
-      {/* <img src={bg} className="bg" /> */}
     </div>
   );
 }
@@ -137,13 +133,36 @@ function Signup(props) {
 }
 
 function Admin() {
+  const [adminData, setAdminData] = useState({
+    markaz_name: "",
+    admin_name: "",
+    parol: "",
+  });
+  const handleAdminChange = (e) => {
+    const { name, value } = e.target;
+    setAdminData({
+      ...adminData, // Fixed typo: changed 'formData' to 'bossData'
+      [name]: value
+    });
+  };
+  const handleAdminSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      const {status} = await axios.post("http://localhost:2002/data/TDcenter/filiallar/Fargona/admin", adminData);
+      // Handle success, maybe show a message to the user
+      console.log("Data successfully added!");
+    } catch (error) {
+      // Handle error, maybe show an error message to the user
+      console.error("Error adding data:", error, adminData);
+    }
+  };
   return (
     <form className="admin">
-      <input type="text" placeholder="Ta`lim markazini kiriting" />
-      <input type="text" placeholder="Ism Familyangiz" />
-      <input type="password" placeholder="Parolingizni kiriting" />
+      <input type="text" name="markaz_name" value={adminData.markaz_name} onChange={handleAdminChange} placeholder="Ta`lim markazini kiriting" />
+      <input type="text" name="admin_name" value={adminData.admin_name} onChange={handleAdminChange} placeholder="Ism Familyangiz" />
+      <input type="password" name="parol" value={adminData.parol} onChange={handleAdminChange} placeholder="Parolingizni kiriting" />
       <NavLink to="/asosiy">
-        <button type="submit" className="loginbtn">
+        <button type="submit" className="loginbtn"onClick={handleAdminChange} >
           Log in
         </button>
       </NavLink>
@@ -151,14 +170,73 @@ function Admin() {
   );
 }
 
+
 function Rahbar() {
+  const [bossData, setBossData] = useState({
+    markaz_name: "",
+    ism: "",
+    tel: "",
+    hudud: "",
+  });
+
+  const handleBossChange = (e) => {
+    const { name, value } = e.target;
+    setBossData({
+      ...bossData, // Fixed typo: changed 'formData' to 'bossData'
+      [name]: value
+    });
+  };
+
+  const handleBossSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+    try {
+      const {status} =  await axios.post("http://localhost:2002/data", bossData);
+      // Handle success, maybe show a message to the user
+      console.log("Data successfully added!");
+      if(status=="OK"){
+        Navigate(<Asosiy/>)
+      }
+    } catch (error) {
+      // Handle error, maybe show an error message to the user
+      console.error("Error adding data:", error, bossData);
+    }
+  };
+
   return (
-    <form className="rahbar">
-      <input type="text" className="r_input" placeholder="Ismingiz" />
-      <input type="text" className="r_input" placeholder="Famiilyangiz" />
-      <input type="text" className="r_input" placeholder="Tel-raqam" />
-      <select>
-        <option className="hudud">Hududlar</option>
+    <form className="rahbar" onSubmit={handleBossSubmit}>
+      <input
+        type="text"
+        name="markaz_name"
+        value={bossData.markaz_name}
+        onChange={handleBossChange}
+        className="r_input"
+        placeholder="Ismingiz"
+      />
+      <input
+        type="text"
+        name="ism"
+        value={bossData.ism}
+        onChange={handleBossChange}
+        className="r_input"
+        placeholder="Famiilyangiz"
+      />
+      <input
+        type="text"
+        name="tel"
+        value={bossData.tel}
+        onChange={handleBossChange}
+        className="r_input"
+        placeholder="Tel-raqam"
+      />
+      <select
+        name="hudud"
+        value={bossData.hudud}
+        onChange={handleBossChange}
+        className="r_input"
+      >
+        <option disabled selected className="hudud">
+          Hududlar
+        </option>
         <option>Namangan v</option>
         <option>Andijon v</option>
         <option>Farg`ona v</option>
@@ -173,11 +251,9 @@ function Rahbar() {
         <option>Navoiy v</option>
         <option>Qoraqalpog`iston Res</option>
       </select>
-      <NavLink to="/asosiy">
-        <button type="submit" className="loginbtn">
-          Log in
-        </button>
-      </NavLink>
+      <button type="submit" className="loginbtn">
+        Log in
+      </button>
     </form>
   );
 }
