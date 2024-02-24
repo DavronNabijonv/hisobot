@@ -91,7 +91,7 @@ export function Student_Add({ close_medol }) {
 export function Filial_add(){
 }
 
-export function Tutor_add(){
+export function Tutor_add({close_medol}){
   const [formData, setFormData] = useState({
     tutor_name: "",
     yonalish: "",
