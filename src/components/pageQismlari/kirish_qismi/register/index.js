@@ -126,13 +126,13 @@ function Signup(props) {
       >
         Rahbar
       </p>
-      {tog2 && <Admin />}
-      {tog3 && <Rahbar />}
+      {tog2 && <Admin check_data={"signup"} />}
+      {tog3 && <Rahbar check_boss={"signup"} />}
     </div>
   );
 }
 
-function Admin() {
+function Admin({ check_data }) {
   const [adminData, setAdminData] = useState({
     markaz_name: "",
     admin_name: "",
@@ -142,27 +142,63 @@ function Admin() {
     const { name, value } = e.target;
     setAdminData({
       ...adminData, // Fixed typo: changed 'formData' to 'bossData'
-      [name]: value
+      [name]: value,
     });
   };
   const handleAdminSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    try {
-      const {status} = await axios.post("http://localhost:2002/data/TDcenter/filiallar/Fargona/admin", adminData);
-      // Handle success, maybe show a message to the user
-      console.log("Data successfully added!");
-    } catch (error) {
-      // Handle error, maybe show an error message to the user
-      console.error("Error adding data:", error, adminData);
+    if (check_data === "signup") {
+      try {
+        await axios.post(
+          `http://localhost:2002/data/TDcenter/admin`,
+          adminData
+        );
+        // Handle success, maybe show a message to the user
+        console.log("Data successfully added!");
+        Navigate("/asosiy");
+      } catch (error) {
+        // Handle error, maybe show an error message to the user
+        console.error("Error adding data:", error, adminData);
+      }
+    } else {
+      try {
+        await axios.post(
+          `http://localhost:2002/data/TDcenter/admin/${adminData.admin_name}`
+        );
+        // Handle success, maybe show a message to the user
+        console.log("Data successfully added!");
+        Navigate("/asosiy");
+      } catch (error) {
+        // Handle error, maybe show an error message to the user
+        console.error("Error:", error, adminData);
+      }
     }
   };
   return (
     <form className="admin">
-      <input type="text" name="markaz_name" value={adminData.markaz_name} onChange={handleAdminChange} placeholder="Ta`lim markazini kiriting" />
-      <input type="text" name="admin_name" value={adminData.admin_name} onChange={handleAdminChange} placeholder="Ism Familyangiz" />
-      <input type="password" name="parol" value={adminData.parol} onChange={handleAdminChange} placeholder="Parolingizni kiriting" />
-      <NavLink to="/asosiy">
-        <button type="submit" className="loginbtn"onClick={handleAdminChange} >
+      <input
+        type="text"
+        name="markaz_name"
+        value={adminData.markaz_name}
+        onChange={handleAdminChange}
+        placeholder="Ta`lim markazini kiriting"
+      />
+      <input
+        type="text"
+        name="admin_name"
+        value={adminData.admin_name}
+        onChange={handleAdminChange}
+        placeholder="Ism Familyangiz"
+      />
+      <input
+        type="password"
+        name="parol"
+        value={adminData.parol}
+        onChange={handleAdminChange}
+        placeholder="Parolingizni kiriting"
+      />
+      <NavLink to={"/asosiy"}>
+        <button type="submit" className="loginbtn" onClick={handleAdminSubmit}>
           Log in
         </button>
       </NavLink>
@@ -170,8 +206,7 @@ function Admin() {
   );
 }
 
-
-function Rahbar() {
+function Rahbar(chack_boss) {
   const [bossData, setBossData] = useState({
     markaz_name: "",
     ism: "",
@@ -183,22 +218,32 @@ function Rahbar() {
     const { name, value } = e.target;
     setBossData({
       ...bossData, // Fixed typo: changed 'formData' to 'bossData'
-      [name]: value
+      [name]: value,
     });
   };
 
   const handleBossSubmit = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-    try {
-      const {status} =  await axios.post("http://localhost:2002/data", bossData);
-      // Handle success, maybe show a message to the user
-      console.log("Data successfully added!");
-      if(status=="OK"){
-        Navigate(<Asosiy/>)
+    if (chack_boss === "signup") {
+      try {
+        await axios.post(`http://localhost:2002/data`, bossData);
+        // Handle success, maybe show a message to the user
+        console.log("Data successfully added!");
+        Navigate("/asosiy");
+      } catch (error) {
+        // Handle error, maybe show an error message to the user
+        console.error("Error adding data:", error, bossData);
       }
-    } catch (error) {
-      // Handle error, maybe show an error message to the user
-      console.error("Error adding data:", error, bossData);
+    } else {
+      try {
+        await axios.post(`http://localhost:2002/data/${bossData.markaz_name}`);
+        // Handle success, maybe show a message to the user
+        console.log("Data successfully added!");
+        Navigate("/asosiy");
+      } catch (error) {
+        // Handle error, maybe show an error message to the user
+        console.error("Error:", error, bossData);
+      }
     }
   };
 
@@ -251,9 +296,11 @@ function Rahbar() {
         <option>Navoiy v</option>
         <option>Qoraqalpog`iston Res</option>
       </select>
-      <button type="submit" className="loginbtn">
-        Log in
-      </button>
+      <NavLink to="/asosiy">
+        <button type="submit" className="loginbtn">
+          Log in
+        </button>
+      </NavLink>
     </form>
   );
 }
